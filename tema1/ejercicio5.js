@@ -4,7 +4,7 @@ var arrayPropinas=[];
 var arrayFacturaTotal=[];
 function calculadoraDePropinas(array){
 
-    for(var i=0;i<valorFacturas.length;i++){
+    for(var i=0;i<array.length;i++){
         if(array[i]<50){
             arrayPropinas[i]=array[i]*0.20;
         }
@@ -15,10 +15,10 @@ function calculadoraDePropinas(array){
             arrayPropinas[i]=array[i]*0.10;
         }
     }
-    for(var i=0;i<valorFacturas.length;i++){
+    for(var i=0;i<array.length;i++){
         arrayFacturaTotal[i]=(array[i]+arrayPropinas[i]);
     }
-    for(var i=0;i<valorFacturas.length;i++){
+    for(var i=0;i<array.length;i++){
         console.log(`El precio del restaurante es de: ${array[i]}, la propina sería de: ${arrayPropinas[i]} y haria un total de ${arrayFacturaTotal[i]} `); 
     }
     
