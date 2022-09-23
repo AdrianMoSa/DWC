@@ -3,6 +3,7 @@ var curso={
 nombreCurso:"DAW",
 año:"2022",
 descripción:"Desarrolo de aplicaciones web",
-alumnado,
+alumnado:["Manolo","Juan","Pepe"],
+
 
 };
