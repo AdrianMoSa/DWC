@@ -1,8 +1,8 @@
 "use strict";
 var curso={
-nombreCurso:"",
-año:"",
-descripción:"",
-alumnado:"",
+nombreCurso:"DAW",
+año:"2022",
+descripción:"Desarrolo de aplicaciones web",
+alumnado,
 
-}
+};
