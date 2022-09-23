@@ -6,13 +6,9 @@ function multiplicar(numero){
             resultado=i*j;
             console.log(`${i} * ${j} = ${resultado}`);
           
-        
-        }
-        
-}  
-
+        }    
+    }  
 }
-
 
 function tabla(numero,funcion){
    funcion(numero);
