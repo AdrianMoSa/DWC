@@ -1,16 +1,23 @@
 "use strict";
 
 function tocani(frase){
-    for(var i=0;i<frase.length;i++){
-        while(frase.charAt(i)===frase.charAt(i).toLowerCase()){
-            frase.charAt(i)=frase.charAt(i).toUppercase();
+var array=Array.from(frase);
+   for(var i=0;i<array.length;i++){
+    frase=(frase.charAt(i).toUpperCase());
+       /* if(array[i]===array[i].toUpperCase()){
+            array[i]=array[i].toLowerCase()
+            console.log("Funciona pasar a minusculas");
         }
-        
-      /*  while(frase[i]===frase[i].toUpperCase()){
+        if(array[i]===array[i].toLowerCase()){
+            array[i]=array[i].toUpperCase()
+            console.log("Funciona pasar a mayusculas");
+        }
+       
+        while(frase[i]===frase[i].toUpperCase()){
             frase[i]=frase[i].toLowerCase();
         }
         */
     }
     return console.log(frase);
 }
-tocani(["hOla"]);
+tocani("escatergoris");
