@@ -3,6 +3,7 @@
 
 var minutos=1;
 var segundos=5;
+var totalSegundos=((minutos*60)+segundos);
 const id=setInterval(temporizador,1000);
 
 
