@@ -17,7 +17,7 @@ var intervalo=Math.floor((Math.random() * (5 - 2 + 1)) + 2);
     if(frase[i]==="c"){
         arrayFinal[i]="k";
     }
-    if(frase.charAt(i)==="C"){
+    else if(frase.charAt(i)==="C"){
         arrayFinal[i]="K";
     }
 
