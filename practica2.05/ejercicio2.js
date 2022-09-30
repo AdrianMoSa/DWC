@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 //Programa que realiza un decremento de minutos y segundos. Mediante setInterval se ejecuta el decremento cada segundo.
 

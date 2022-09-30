@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 const id=setInterval(solicitarDni,10000);
 
@@ -15,9 +15,9 @@ if(dni==-1){
         for(var i=0;i<dni.length;i++){
             resultado=dni%23;
             letraDni[i]=secuenciaLetrasNIF.charAt(resultado);
-            
+            console.log(`La letra del dni: ${dni} es ${letraDni}`);
             }
     }
-    return console.log(`La letra del dni: ${dni} es ${letraDni}`);
+    
 }
 

@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 //Función que sirve para pasar una frase a cani.
 
 function tocani(frase){
