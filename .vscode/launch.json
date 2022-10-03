@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "name": "http://console.log(esPalindromo(77));",
+            "request": "launch",
+            "url": "http://console.log(esPalindromo(77));"
+        }
+    ]
+}

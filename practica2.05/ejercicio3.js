@@ -1,5 +1,5 @@
 "use strict"
-
+//Esta función sirve para identificar la letra de un DNI.
 const id=setInterval(solicitarDni,10000);
 
 function solicitarDni(){
