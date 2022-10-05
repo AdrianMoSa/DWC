@@ -1,4 +1,5 @@
 "use strict";
+//Tras muchas horas de pensar me ha tocado mirar parte del código en internet porque sabía lo que queria hacer, pero no conseguia ponerlo en práctica.
 //Ejemplo de sudoku correcto
 var sudokuCorrecto = [];
 sudokuCorrecto[0] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -26,14 +27,17 @@ function comprobarSudoku(sudoku) {
   for (var i = 0; i < 9; i++) {
   for (var j = 0; j < 9; j++) {
       for (var k = j + 1; k < 9; k++) {
-      if (sudoku[i][j] == sudoku[i][k]) {
+      //Esta parte comprueba las columnas.
+       if (sudoku[i][j] == sudoku[i][k]) {
         console.log(`Error el numero ${sudoku[i][j]} está repetido en las columnas `)
           return false;
       }
+      //Esta parte comprueba las filas.
       if (sudoku[j][i] == sudoku[k][i]) {
           console.log(`Error el numero ${sudoku[j][i]} está repetido en las filas`)
         return false;
       }
+      //Esta parte comprueba los cuadros.
       if (sudoku[Math.floor(i/3) * 3 + Math.floor(j/3)][i%3 * 3 + j%3] == sudoku[Math.floor(i/3) * 3 + Math.floor(k/3)][i%3 * 3 + k%3]) {
         console.log("Incorrecto hay un numero repetido en las celdas");
           return false;
