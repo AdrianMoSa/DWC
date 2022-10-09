@@ -6,7 +6,7 @@ function Actores(props){
     <React.Fragment>
         <h3>{props.nombre}</h3>
         <img src={props.foto}></img>
-        <p>{props.biografia}</p>
+        <p>{props.children}</p>
     </React.Fragment>
     );
 }
