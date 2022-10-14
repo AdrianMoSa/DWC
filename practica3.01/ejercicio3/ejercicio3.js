@@ -2,9 +2,9 @@
 var doc=window.document;
 
 function añadirFila(){
-    elemento=doc.createElement("td");
-    elemento.innerHTML="";
-    doc.getElementsByID("boton1").appendchild(elemento)
+    var elemento=doc.createElement("ul");
+
+    doc.getElementByID("añadirFila").appendchild(elemento);
 }
 
 
