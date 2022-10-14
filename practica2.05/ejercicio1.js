@@ -25,4 +25,4 @@ var intervalo=Math.floor((Math.random() * (5 - 2 + 1)) + 2);
     arrayFinal.push(letra.repeat(intervalo))
     return console.log(arrayFinal.join(""));
 }
-tocani("Calcetines y medias");
+tocani("Somos especiales");
