@@ -1,6 +1,8 @@
 "use strict"
 var doc=window.document;
+//no he sabido hacerlo sin utilizar esta función.
 document.body.onload=creardiv;
+
 var numeroParrafos= document.querySelectorAll("p").length;
 var textoSegundoParrafo= document.querySelector("p:nth-child(2)").innerHTML;
 var numeroEnlacesPagina=document.querySelectorAll("a").length;
