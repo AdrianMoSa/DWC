@@ -1,11 +1,14 @@
 "use strict"
+var doc=window.document;
 
-
-function insertAfter(e,i){ 
-    if(e.nextSibling){ 
-        e.parentNode.insertBefore(i,e.nextSibling); 
-    } else { 
-        e.parentNode.appendChild(i); 
-    }
+//Función que utiliza la última referencia e inserta otra despues.
+function insertAfter(nuevo, anterior) {
+    anterior.parentNode.insertBefore(nuevo, anterior.nextSibling);
 }
+let palabras = document.getElementById('palabras');
+
+let li = document.createElement('li');
+li.textContent = 'Manolo';
+
+insertAfter(li,  palabras.lastElementChild)
 

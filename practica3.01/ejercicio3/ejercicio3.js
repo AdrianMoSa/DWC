@@ -1,11 +1,13 @@
 "use strict"
 var doc=window.document;
+  
+function añadirFila() {
+      let bodyTabla=document.getElementById("bodyTabla").insertRow(0);
+      let col=bodyTabla.insertCell(0);
+      col.innerHTML=document.getElementById("texto").value;
 
-function añadirFila(){
-    var elemento=doc.createElement("ul");
+    }
 
-    doc.getElementByID("añadirFila").appendchild(elemento);
-}
 
 
 
@@ -31,11 +33,13 @@ function tocani(frase){
     
         }
         arrayFinal.push(letra.repeat(intervalo))
-        return console.log(arrayFinal.join(""));
+        return arrayFinal.join("");
     }
     function caniar(){
-    var acani=doc.getElementById("ejemplo").innerHTML;
-    tocani(acani);
-    doc.replaceChild(acani,doc.getElementById("ejemplo").innerHTML);
+    var traduccion=doc.createElement("tr")
+    var acani=document.getElementById("texto").value;
+    var frase=tocani(acani);
+    traduccion.innerHTML=frase;
+    doc.getElementById("bodyTabla").appendChild(traduccion).value;
     
     }
