@@ -1,6 +1,6 @@
 "use strict"
 var doc=window.document;
-  
+ //Me ha tocado cambiar la función de tocani porque devolvia un console.log y por eso no se escribia en la página. 
 function añadirFila() {
       let bodyTabla=document.getElementById("bodyTabla").insertRow(0);
       let col=bodyTabla.insertCell(0);
