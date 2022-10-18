@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#parrafos{
+    width: 60%;
+    margin: auto;
+}
+
+#parrafos p{
+    font-size: 40px;
+    border: 3px solid #ccc;
+    padding: 5px;
+    margin: 20px 0;
+}
+
+.ocultar{
+    visibility: hidden;
+}
+
+.eliminar{
+    display: none;
+}
+
+.mostrar{
+    visibility: visible;
+}

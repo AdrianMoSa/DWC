@@ -1,0 +1,10 @@
+.celda{
+    border: 1px solid #000;
+    text-align: center;
+    padding: 5px;
+}
+
+.primo{
+    background-color: #ff0000;
+    font-weight: bold;
+}
