@@ -1,49 +1,125 @@
 "use strict";
-var doc= window.document;
+var doc = window.document;
 
-function generarTarea(){
-    var tarea=doc.createElement("div");
-    var texto=doc.getElementById("tareas").firstElementChild;
-    tarea.classList.add('tarea');
-    tarea.innerHTML=(`
+function generarTarea() {
+  var tarea = doc.createElement("div");
+  var texto = doc.getElementById("tareas").firstElementChild;
+  tarea.classList.add("tarea");
+  tarea.innerHTML = `
     <p>${texto.value}</p>
     <p class="botones">
-      <input type="button" value="Borrar" class="del" />
-      <input type="button" value="Acabar" class="end" />
-    </p>`);
-    
-   
-    return tarea;
-}
-
-
-var anyadirTarea=doc.querySelector('.add')
-
-anyadirTarea.addEventListener('click',() => {
-   var destino=doc.getElementById("pendientes");
-   var texto=doc.getElementById("tareas").firstElementChild;
-   if(texto.value==""){
-    texto.value="Escriba algo señor";
-  }
-  else{
-    destino.appendChild(generarTarea());
-    
-  }
-    texto.value="";
-    texto.focus();
-})
-function deletearTarea(a){
-  console.log(a)
-// var almacen=doc.querySelector('.del')
-a.parentElement.parentElement.remove();
-// almacen.remove();
+      <input type="button" onClick="deletearTarea(this);" value="Borrar" class="del" />
+      <input type="button" onClick="acabarTarea(this);" value="Acabar" class="end" />
+    </p>`;
+    var destino = doc.getElementById("pendientes");
+    destino.appendChild(tarea);
+    texto.value = "";
 
 }
 
+var arbolAnyadir = doc.getElementById("tareas");
+var anyadirTarea = arbolAnyadir.querySelector(".add");
 
-var borrarTarea=doc.querySelector('.del')
-borrarTarea.addEventListener('click',()=>{
-  deletearTarea(this);
+anyadirTarea.addEventListener("click", () => {
+  var texto = doc.getElementById("tareas").firstElementChild;
+  if (texto.value == "") {
+    texto.value = "Escriba algo hipoglúcido/a";
+  } else {
+    generarTarea();
+ 
+  }
+
+  texto.focus();
+});
+//Le entra un botón como parametro al no tener una id el div, hay que guardar la posición del botón en una variable para poder subir hasta el div.
+function deletearTarea(boton) {
+  var divTarea = boton.parentElement.parentElement;
+  divTarea.remove();
+}
+/*Hacemos un foreach porque al haber elementos previos en html necesitamos recorrer todos los botones, sino nos valdría solo con el onclick del botón con this(linea 11).
+A la función deletearTarea hay que pasarle un botón.
+Esto solo se hace porque hay elementos previos en html, sino solo se harían las lineas(35-37).
+*/
+var arbolBorrar = doc.getElementById("pendientes");
+var borrarTareas = arbolBorrar.querySelectorAll(".del");
+borrarTareas.forEach((borrarTarea) =>
+  borrarTarea.addEventListener("click", () => {
+    deletearTarea(borrarTarea);
+  })
+);
+
+// Aquí en las últimas 3 líneas desarrollamos la función del botón. 
+function acabarTarea(boton) {
+  var divTarea = boton.parentElement.parentElement;
+  var tarea = doc.createElement("div");
+  var texto = divTarea.querySelector("p").innerHTML;
+  tarea.classList.add("acabada");
+  tarea.innerHTML = `
+  <p>${texto}</p>
+  <p class="botones">
+    <input type="button" onCLick="archivarTarea(this)" value="Archivar" class="esc" />
+    <input type="button" onClick="volverTarea(this)" value="Volver" class="end" />
+  </p>`;
+  var destino = doc.getElementById("acabadas");
+  destino.appendChild(tarea);
+  deletearTarea(boton);
+}
+
+var arbolAcabar = doc.getElementById("pendientes");
+
+var acabarTareas = arbolAcabar.querySelectorAll(".end");
+acabarTareas.forEach((acabar) =>
+  acabar.addEventListener("click", () => {
+    acabarTarea(acabar);
+  })
+);
+
+function volverTarea(boton) {
+  var divTarea = boton.parentElement.parentElement;
+  var tarea = doc.createElement("div");
+  var texto = divTarea.querySelector("p").innerHTML;
+  tarea.classList.add("tarea");
+  tarea.innerHTML = `
+  <p>${texto}</p>
+  <p class="botones">
+  <input type="button" onClick="deletearTarea(this);" value="Borrar" class="del" />
+  <input type="button" onClick="acabarTarea(this);" value="Acabar" class="end" />
+  </p>`;
+  var destino = doc.getElementById("pendientes");
+  destino.appendChild(tarea);
+  deletearTarea(boton);
+}
+var arbolVolver = doc.getElementById("acabadas");
+var volver = arbolVolver.querySelector(".end");
+
+volver.addEventListener("click", () => {
+  volverTarea(volver);
 });
 
+function archivarTarea(boton) {
+  var divTarea=boton.parentElement.parentElement;
+  divTarea.classList.remove("acabada");
+  divTarea.classList.add("invisible");
+}
+
+var arbolArchivar = doc.getElementById("acabadas");
+var archivar = arbolArchivar.querySelector(".esc");
+
+volver.addEventListener("click", () => {
+  archivarTarea();
+});
+
+function mostrarTareas(){
+  var invisibles=doc.querySelectorAll(".invisible")
+  invisibles.forEach(invisible=>{
+    invisible.classList.remove("invisible");
+    invisible.classList.add("acabada");
+  })
+}
+
+
+var mostrar=doc.querySelector('.sho')
+mostrar.addEventListener("click",()=>{
+  mostrarTareas();
+})
 

@@ -1,0 +1,9 @@
+.oculto{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}
+.padre{
+    display: flex;
+}

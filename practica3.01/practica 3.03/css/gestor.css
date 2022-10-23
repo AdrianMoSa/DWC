@@ -41,3 +41,7 @@
 #mostrar {
   text-align: right;
 }
+
+.invisible{
+  visibility: hidden;
+}
