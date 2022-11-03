@@ -214,7 +214,7 @@ pendientes.addEventListener("dragleave", (evento) => {
   evento.preventDefault();
   evento.target.style.opacity = "1";
 });
-//linea 177-178
+//linea 177-178 para ver que pasa
 function insertAfter(primerElemento, segundoElemento){
   if(segundoElemento.nextSibling){ 
       segundoElemento.parentNode.insertBefore(primerElemento,segundoElemento.nextSibling);
