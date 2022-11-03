@@ -174,8 +174,7 @@ document.addEventListener(
         elementoArrastrado
         
       );
-      var ultimoNino=pendientes.lastChild;
-      insertAfter(elementoArrastrado,ultimoNino);
+     
     } else if (evento.target.id == "pendientes") {
     
       elementoArrastrado.classList = "tarea";
