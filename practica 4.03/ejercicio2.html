@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="ejercicio2.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <fieldset id="cajaSelect">
+        <legend>Select</legend>
+        <select id="estilo">
+          <option value="noEstilo">
+            Selecciona un estilo para el párrafo
+          </option>
+          <option value="rojo">Fondo rojo</option>
+          <option value="azul">Fondo azul</option>
+          <option value="verde">Fondo verde</option>
+          
+        </select>
+        <div>
+            <textarea id="texto"></textarea>
+        </div>
+        <div>
+            <p class="boton">
+                <input type="button"  value="Generar párrafo" id="generar"  />  
+            </p>
+      </fieldset>
+    </div>
+    <div id="resultado"></div>
+    <script src="ejercicio2.js"></script>
+</body>
+</html>

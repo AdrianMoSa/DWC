@@ -1,0 +1,9 @@
+div#resultado.azul{
+    background-color: blue;
+}
+div#resultado.rojo{
+    background-color: red;
+}
+div#resultado.verde{
+    background-color: green;
+}
