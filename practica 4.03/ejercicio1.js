@@ -18,7 +18,8 @@ window.onload = () => {
         }
         
     }
-    marcarParesCheckBox();
+
+    
     
 
   botonPares.addEventListener(
@@ -51,6 +52,6 @@ window.onload = () => {
 
 
 
-
+  window.addEventListener("load", marcarParesCheckBox(),false);
 
 }
