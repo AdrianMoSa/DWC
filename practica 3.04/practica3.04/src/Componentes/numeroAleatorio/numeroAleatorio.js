@@ -16,8 +16,8 @@ function numeroAleatorio() {
     <React.Fragment>
       <div>
         <p>
-        {numerosAleatorios.map((numeroAleatorio) => {
-            return <li key={numeroAleatorio}>{numeroAleatorio}</li>;
+        {numerosAleatorios.map(() => {
+            return <li key={num}>{num}</li>;
           })}
         </p>
         <button
