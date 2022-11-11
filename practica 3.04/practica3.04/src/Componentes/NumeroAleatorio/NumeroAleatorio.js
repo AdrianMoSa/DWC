@@ -4,22 +4,21 @@ function NumeroAleatorio() {
   const [numerosAleatorios, setNumeroAleatorio] = useState(valorInicial);
 
   function obtenerNUmero() {
-    var max=100;
+    var max=10;
     return Math.floor(Math.random() * max);
   }
 
   const addNumeroAleatorio = () => {
      var aleatorio=obtenerNUmero();
+     setNumeroAleatorio([...numerosAleatorios, aleatorio]);
     for (var i=0;i<numerosAleatorios.length;i++){
       if (aleatorio===numerosAleatorios[i]){
         addNumeroAleatorio();
       }
-      else{
-        setNumeroAleatorio([...numerosAleatorios, aleatorio]);
-      }
+    
     }
     //meter la función del numero aleatorio, supongo que la puedes declarar fuera y las comprobaciones de si está o no, si está llamar de nuevo a la función.
-   
+  
   };
 
   const borrarTodo = () => {
@@ -30,14 +29,12 @@ function NumeroAleatorio() {
     <React.Fragment>
       <div>
         <p>
-        {numerosAleatorios.map((num) => {
-            return <li key={num}>{num}</li>;
+        {numerosAleatorios.map((aleatorio) => {
+            return <li key={aleatorio}>{aleatorio}</li>;
           })}
         </p>
         <button
-          onClick={() => {
-            addNumeroAleatorio();
-          }}
+          onClick={addNumeroAleatorio}
         >
           Generar
         </button>
