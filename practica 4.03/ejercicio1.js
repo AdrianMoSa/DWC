@@ -1,13 +1,12 @@
 "use strict";
+import { generarNumerosAleatorios } from "./biblioteca.js";
 
 window.onload = () => {
     var botonPares=document.getElementById("marcar");
     var botonDesmarcar=document.getElementById("desmarcar");
     
-    function generarNumerosAleatorios(min, max) {
-        return Math.floor((Math.random() * (max - min + 1)) + min);
-    }   
-
+      
+  //Función que crea el checkBox con números aleatórios.
     function marcarParesCheckBox(){
         var opciones=document.getElementById("cajaBoton");
         console.log(opciones);
@@ -20,7 +19,7 @@ window.onload = () => {
     }
 
     
-    
+    //Cuando pulsas el botón te marca los pares a check.
 
   botonPares.addEventListener(
     "click",
@@ -36,6 +35,7 @@ window.onload = () => {
     false
   );
     
+  //Cuando pulsas el botón de desmarcar te pone el check a false de los pares.
   botonDesmarcar.addEventListener(
     "click",
     (e) => {

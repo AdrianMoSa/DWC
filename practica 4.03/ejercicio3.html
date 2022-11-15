@@ -23,37 +23,39 @@
       <fieldset id="fechaDisco">
         <legend>Año de publicación</legend>
         <label>
-          <input type="date" />
+          <input type="date" name="anyo" id="anyo" />
         </label>
       </fieldset>
-      <fieldset id="cajaSelect">
-        <legend>Estilo de Música</legend>
-        <select id="tipoGrupo">
-          <option value="noGrupo">Selecciona un estilo de música</option>
-          <option value="rock">Rock</option>
-          <option value="progressive">Progressive</option>
-          <option value="punk">Punk</option>
-          <option value="trash">Trash</option>
-        </select>
-      </fieldset>
+      <fieldset id="radioBoton">
+        <legend>Tipo de música</legend>
+        <input type="radio" id="rock" name="musica" value="rock" />
+        <label for="rock">Rock</label>
+        <input type="radio" id="progressive" name="musica" value="progressive" />
+        <label for="progressive">Progressive</label>
+        <input type="radio" id="punk" name="musica" value="punk" />
+        <label for="rock">Punk</label>
+        <input type="radio" id="trash" name="musica" value="trash" />
+        <label for="trash">Trash</label>
+    </fieldset>
       <fieldset id="localizacion">
         <legend>Número de estanteria</legend>
         <input type="text" id="numeroEstanteria" />
       </fieldset>
       <fieldset id="prestado">
         <legend>Prestado</legend>
-        <input type="radio" id="preguntaSI" name="pregunta" value="si;" />
-        <label for="preguntaSI">Sí</label>
-        <input type="radio" id="preguntaNO" name="pregunta" value="no" checked />
-        <label for="preguntaNO">No</label>
+        <input type="radio" id="si" name="prestado" value="si;" />
+        <label for="si">Sí</label>
+        <input type="radio" id="no" name="prestado" value="no" checked />
+        <label for="no">No</label>
       </fieldset>
       <div>
         <p class="boton">
-            <input type="button"  value="Guardar disco" id="guardar"  /> 
+            <input type="button"  value="Guardar disco" id="btn"  /> 
             <input type="button" value="Mostrar discos guardaos" id="mostrar">
         </p>
       </div>
     </form>
+    <div class="divDatos"></div>
     <script src="ejercicio3.js"></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 "use strict";
 
 window.onload = () => {
+    //función que al hacer click en generar te genera un párrafo con el estilo seleccionado y si no tiene estilo te advierte que pongas uno.
 var botonParrafo=document.getElementById("generar");
     botonParrafo.addEventListener(
         "click",

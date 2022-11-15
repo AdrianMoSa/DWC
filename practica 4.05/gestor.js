@@ -67,6 +67,9 @@ function acabarTarea(boton) {
   var destino = doc.getElementById("acabadas");
   destino.appendChild(tarea);
   deletearTarea(boton);
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].setAttribute("draggable", true);
+  }
 }
 
 var arbolAcabar = doc.getElementById("pendientes");
