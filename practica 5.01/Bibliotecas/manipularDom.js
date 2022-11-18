@@ -15,5 +15,20 @@ function mostrarPelicula(objeto, donde) {
     donde.innerHTML = cadena;
   }
   
+  function mostrarPeli(objeto, donde) {
+    let cadena = "";
+    objeto.map((v) => {
+      cadena += `<h1> ${v.title} </h1>`;
+    });
+    donde.innerHTML = cadena;
+  }
+  function mostrarDatos(objeto, donde) {
+    let cadena = "";
+    objeto.map((v) => {
+      cadena += `<p> Dirigida por: ${v.director}<br/> Producida por: ${v.producer}<br/> En el año: ${v.release_date}<br/> Sinopsis: ${v.opening_crawl}  </p>`;
+    });
+    donde.innerHTML = cadena;
+  }
+ 
 
-export { mostrarPelicula };
+export { mostrarPelicula,mostrarPeli,mostrarDatos};
