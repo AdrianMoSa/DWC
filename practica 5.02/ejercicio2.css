@@ -5,33 +5,33 @@
     height: 100%;
     width: 100%;
    
-    display: grid inline-flex;
+    display: flex;
    
     
     
 }
-article#peliculas{
+div#estudiantes{
     height: max-content;
     width: 20%;
-    margin: 5px;
+
    
-    float:left;
+    float:right;
     background-color: orange;
     
 }
 
-article#informacion{
+div#hechizos{
     height: 100%;
     width: 70%;
-    margin: 5px;
+   
     
-    background-color: yellow;
-    float:right;
+    background-color: lightblue;
+    float:left;
    
 }
 
 body{
-    background-color: grey;
+    background-color: lightblue;
     
 
 }
@@ -39,4 +39,13 @@ body{
 li{
     padding-bottom: 10px;
     
+}
+
+img#hogwarts{
+    background-color: yellow;
+    
+}
+
+header{
+    font-size: 200px;
 }

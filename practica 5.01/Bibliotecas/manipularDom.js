@@ -1,34 +1,30 @@
 "use strict";
 
-function mostrar(objeto, donde) {
-  let cadena = "";
-  objeto.map((v, i, a) => {
-    cadena += `<p>El planeta ${v.name} tiene un periodo orbital de ${v.orbital_period} días terrestres.</p>`;
-  });
-  donde.innerHTML = cadena;
-}
 function mostrarPelicula(objeto, donde) {
     let cadena = "";
     objeto.map((v, i, a) => {
-      cadena += `<li> ${v.title} episodio ${v.episode_id}.</li>`;
+      cadena += `<li value=${v.episode_id}> ${v.title} episodio ${v.episode_id}.</li>`;
     });
     donde.innerHTML = cadena;
   }
   
-  function mostrarPeli(objeto, donde) {
+  function mostrarTitulo(objeto, donde,cual) {
     let cadena = "";
     objeto.map((v) => {
+      if(cual===v.episode_id){
       cadena += `<h1> ${v.title} </h1>`;
-    });
+  }});
     donde.innerHTML = cadena;
   }
-  function mostrarDatos(objeto, donde) {
+  function mostrarDatos(objeto, donde,cual) {
     let cadena = "";
     objeto.map((v) => {
-      cadena += `<p> Dirigida por: ${v.director}<br/> Producida por: ${v.producer}<br/> En el año: ${v.release_date}<br/> Sinopsis: ${v.opening_crawl}  </p>`;
-    });
+      
+      if(cual===v.episode_id){
+      cadena += `<p> Dirigida por: ${v.director}<br/> Producida por: ${v.producer}<br/> Fecha: ${v.release_date}<br/> Sinopsis: ${v.opening_crawl}  </p>`;
+  }});
     donde.innerHTML = cadena;
   }
  
 
-export { mostrarPelicula,mostrarPeli,mostrarDatos};
+export { mostrarPelicula,mostrarTitulo,mostrarDatos};
