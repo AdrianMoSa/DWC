@@ -1,0 +1,42 @@
+
+
+
+#contedor{
+    height: 100%;
+    width: 100%;
+   
+    display: grid inline-flex;
+   
+    
+    
+}
+article#peliculas{
+    height: max-content;
+    width: 20%;
+    margin: 5px;
+   
+    float:left;
+    background-color: orange;
+    
+}
+
+article#informacion{
+    height: 100%;
+    width: 70%;
+    margin: 5px;
+    
+    background-color: yellow;
+    float:right;
+   
+}
+
+body{
+    background-color: grey;
+    
+
+}
+
+li{
+    padding-bottom: 10px;
+    
+}
