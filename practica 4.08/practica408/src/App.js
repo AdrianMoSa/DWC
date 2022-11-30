@@ -1,12 +1,11 @@
-
 import React from "react";
-import { Lista_compra } from './lista_compra/Lista_compra';
-import './lista_compra/Lista_compra.css'
+import Ejercicio1 from "./Ejercicio1/Ejercicio1";
+
 
 function App() {
   return (
     <React.Fragment>
-      <Lista_compra />
+      <Ejercicio1></Ejercicio1>
     </React.Fragment>
   );
 }
