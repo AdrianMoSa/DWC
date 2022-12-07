@@ -1,5 +1,5 @@
 import React from "react";
-
+//Muestra el listado de las naves.
 function ListadoNaves(props) {
   return (
     <React.Fragment>

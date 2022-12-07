@@ -1,5 +1,5 @@
 import React from "react";
-
+//Filtra los datos de la película.
 function Pelicula(props){
     return(
         <React.Fragment>

@@ -1,5 +1,5 @@
 import React from "react";
-
+//Filtra los datos de la nave.
 function Nave(props){
     return(
         <React.Fragment>

@@ -1,5 +1,5 @@
 import React from "react";
-
+//Filtra los datos del vehículo.
 function Vehiculo(props){
     return(
         <React.Fragment>

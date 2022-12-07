@@ -15,20 +15,6 @@ const obtenerDatos = (url) => {
   );
 };
 
-const formatear = (valor) => {
-  var num = valor.replace(/\./g, "");
-  if (!isNaN(num)) {
-    num = num
-      .toString()
-      .split("")
-      .reverse()
-      .join("")
-      .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
-    num = num.split("").reverse().join("").replace(/^[\.]/, "");
-    return num;
-  } else {
-    return valor;
-  }
-};
 
-export { obtenerDatos, formatear };
+
+export { obtenerDatos};

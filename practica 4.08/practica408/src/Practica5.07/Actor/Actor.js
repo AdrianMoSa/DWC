@@ -1,5 +1,5 @@
 import React from "react";
-
+//Filtra los datos a mostrar de actor.
 function Actor(props){
     return(
         <React.Fragment>

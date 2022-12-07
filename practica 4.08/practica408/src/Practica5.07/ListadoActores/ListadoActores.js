@@ -1,5 +1,5 @@
 import React from "react";
-
+//Muestra el listado de actores.
 function ListadoActores(props) {
   return (
     <React.Fragment>

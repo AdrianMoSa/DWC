@@ -1,5 +1,5 @@
 import React from "react";
-
+//Muestra el listado de Películas.
 function ListadoPeliculas(props) {
   return (
     <React.Fragment>

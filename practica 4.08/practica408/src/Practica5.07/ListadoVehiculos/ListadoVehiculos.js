@@ -1,5 +1,5 @@
 import React from "react";
-
+//Muestra el listado de vehiculos.
 function ListadoVehiculos(props) {
   return (
     <React.Fragment>
