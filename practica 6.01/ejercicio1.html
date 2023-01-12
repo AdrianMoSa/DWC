@@ -8,7 +8,20 @@
     <link rel="stylesheet" type="text/css" href="ejercicio1.css"/>
 </head>
 <body>
-    
+    <div id="botones">
+        <select type="select" id="tipo">
+            <option value="Predeterminado">Escoja una opción de filtro</option>
+            <option value="Nombre">Filtrar por: Nombre</option>
+            <option value="Precio" >Filtrar por: Precio</option>
+            <option value="Peso">Filtrar por: Peso</option>
+          </select>
+        <input type="label" id="valor" placeholder=>
+        <input type="button" id="buscar" value="Filtrar" />
+        
+        
+    </div>
+    <div id="container"></div>
+    <div id="datosFiltrados"></div>
     <script type="module" src="ejercicio1.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 "use strict";
-// Me gustaría saber si se puede de alguna manera filtrar los datos en un campo determinado y ordenarlos por otro distinto. (Me daba error al hacerlo).
 import * as plantillas from "./plantillasFirebase.js";
 import { app } from "./conexionFirebase.js";
 import {
@@ -19,34 +18,37 @@ window.onload = () => {
   let datos = document.getElementById("container");
   let busqueda = document.getElementById("buscar");
   let informacion = document.getElementById("datosFiltrados");
+  var orden=document.getElementById("ordenar")
   var producto;
   var tipoFiltro;
- 
+  var ordenarPor;
+
   const db = getFirestore(app);
   const listaCompraColeccion = collection(db, "Productos");
 
-// Función para mostrar los datos de la lista de la compra.
   const obtenerListaCompra = async () => {
     const listaCompraDocumentos = await getDocs(listaCompraColeccion);
     datos.innerHTML = "";
+    console.log(listaCompraDocumentos);
     listaCompraDocumentos.docs.map((documento) => {
       datos.innerHTML += plantillas.pintarProducto(documento);
     });
   };
 
   obtenerListaCompra();
-
-  //Función que filtra y ordena los productos.
-  const filtrarProductos = async () => {
+  const filtrarProductos = async (campo, valor) => {
     
     if (tipo.value == "Nombre") {
       const consulta = query(
         listaCompraColeccion,
+        orderBy(ordenarPor,"asc"),
         where("Nombre", "==", producto)
         
       );
       const compraFiltrada = await getDocs(consulta);
+      // Se comprueba la longitud de la consulta.
       informacion.innerHTML = `<p class='datos'>Se ha(n) obtenido ${compraFiltrada.docs.length} registro(s).</p>`;
+      // Se borran los datos del contenedor.
       datos.innerHTML = "";
       if (compraFiltrada.docs.length) {
         compraFiltrada.docs.map((documento) => {
@@ -62,11 +64,13 @@ window.onload = () => {
         listaCompraColeccion,
         
         where("Precio", "<=", producto),
-        orderBy("Precio","asc"),
+        orderBy(ordenarPor,"asc"),
         
       );
       const compraFiltrada = await getDocs(consulta);
+      // Se comprueba la longitud de la consulta.
       informacion.innerHTML = `<p class='datos'>Se ha(n) obtenido ${compraFiltrada.docs.length} registro(s).</p>`;
+      // Se borran los datos del contenedor.
       datos.innerHTML = "";
       if (compraFiltrada.docs.length) {
         compraFiltrada.docs.map((documento) => {
@@ -80,12 +84,14 @@ window.onload = () => {
       producto=parseFloat(producto);
       const consulta = query(
         listaCompraColeccion,
-        orderBy("Peso","asc"),
+        orderBy(ordenarPor,"asc"),
         where("Peso", "<=", producto)
         
       );
       const compraFiltrada = await getDocs(consulta);
+      // Se comprueba la longitud de la consulta.
       informacion.innerHTML = `<p class='datos'>Se ha(n) obtenido ${compraFiltrada.docs.length} registro(s).</p>`;
+      // Se borran los datos del contenedor.
       datos.innerHTML = "";
       if (compraFiltrada.docs.length) {
         compraFiltrada.docs.map((documento) => {
@@ -96,13 +102,14 @@ window.onload = () => {
       }
     }
   };
-//Función para poder filtrar la busqueda
+
   busqueda.addEventListener("click", () => {
     let datosBusqueda = document.getElementById("valor");
     tipoFiltro = tipo.value;
     producto = datosBusqueda.value;
     datosBusqueda.value = "";
-    filtrarProductos();
+    ordenarPor=orden.value;
+    filtrarProductos("Nombre", datosBusqueda.value);
     
   });
  
