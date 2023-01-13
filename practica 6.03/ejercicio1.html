@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="ejercicio1.css"/>
+</head>
+<body>
+    <div id="botones">
+        <select type="select" id="tipo">
+            <option value="Predeterminado">Escoja una opción de filtro</option>
+            <option value="Nombre">Filtrar por: Nombre</option>
+            <option value="Precio" >Filtrar por: Precio</option>
+            <option value="Peso">Filtrar por: Peso</option>
+          </select>
+        <input type="label" id="valor" placeholder=>
+        <input type="button" id="buscar" value="Filtrar" />
+        <a href="#formularioAgregar"><input type="button" id="anyadir" value="Agregar Producto"/></a>
+        <input type="button" id="registrar" value="Registrar usuario"/>
+        
+        
+    </div>
+    <div id="container"></div>
+    <div id="datosFiltrados"></div>
+    <div id="cuadroResumen"></div>
+    <section id="formularioAgregar">
+    <div id="formulario">
+        <form  method="post"> 
+            <h1>Agregar producto</h1>
+            <ul>
+             <li>
+               <label for="nombre">Nombre:</label>
+               <input type="text" id="nombre" name="nombre">
+             </li>
+             <li>
+               <label for="precio">Precio:</label>
+               <input type="number" id="precio" name="precio">
+             </li>
+             <li>
+               <label for="peso">Peso:</label>
+               <input type="number" id="peso" name="peso"></input>
+             </li>
+             <li>
+                <label for="imagen">Imagen:</label>
+                <input type="text" id="imagen" name="imagen"></input>
+              </li>
+              <li>
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion"></input>
+              </li>
+            </ul>
+            <input type="button" id="guardar" value="Guardar" />
+           </form>
+    </div>
+  </section>
+  <section id="formularioQueModifica">
+    <div id="formularioModificar">
+      <form  method="post"> 
+          <h1>Modificar producto</h1>
+          <ul>
+           <li>
+             <label for="nombre">Nombre:</label>
+             <input type="text" id="nombreM" name="nombre">
+           </li>
+           <li>
+             <label for="precio">Precio:</label>
+             <input type="number" id="precioM" name="precio">
+           </li>
+           <li>
+             <label for="peso">Peso:</label>
+             <input type="number" id="pesoM" name="peso"></input>
+           </li>
+           <li>
+              <label for="imagen">Imagen:</label>
+              <input type="text" id="imagenM" name="imagen"></input>
+            </li>
+            <li>
+              <label for="descripcion">Descripción:</label>
+              <input type="text" id="descripcionM" name="descripcion"></input>
+            </li>
+          </ul>
+          <input type="button" id="modificarProducto" value="Modificar Producto" />
+         </form>
+  </div>
+</section>
+<section id="formularioQueCreaUsuario">
+  <div>
+<form method="post">
+<h1>Creación usuario</h1>
+<label for="usuario">Usuario</label>
+          <input type="text" id="usuario" />
+          <label for="consigna">Contraseña</label>
+          <input type="text" id="consigna" />
+          <input type="button" id="crear" value="Crear usuario" />
+</form>
+</div>
+</section>
+    <footer id="informacion"></footer>
+    <script type="module" src="ejercicio1.js"></script>
+</body>
+</html>
