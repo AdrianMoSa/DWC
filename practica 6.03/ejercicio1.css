@@ -49,3 +49,22 @@ div#cuadroResumen{
     font-size: 1.5rem;
     margin: 0px auto;
 }
+
+div#botones{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    
+}
+div#botones input{
+    margin:4px;
+    
+}
+
+
+#limpiar{
+    display:none;
+    justify-self: end;
+}
+
