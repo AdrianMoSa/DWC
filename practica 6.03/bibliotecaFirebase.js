@@ -248,6 +248,17 @@ function modificarProducto(){
   return productoModificado;
 }
 
+//Función que rellena el formulario al pulsar el boton del producto.
+const rellenarFormulario = async(ref)=>{
+const productoEditarID= await doc(listaCompraColeccion, ref);
+const p = await getDoc(productoEditarID);
+document.getElementById("nombreM").value= p.data().Nombre;
+document.getElementById("precioM").value= p.data().Precio;
+document.getElementById("pesoM").value= p.data().Peso;
+document.getElementById("imagenM").value=p.data().Imagen;
+document.getElementById("descripcionM").value=p.data().descripcion;
+}
+
 //Función para guardar el producto.
 const guardarProducto = async (objeto) => {
   const compraGuardada = await addDoc(listaCompraColeccion, objeto);
@@ -325,4 +336,4 @@ const crearUsuario = async (usuario, contra) => {
   };
 
 
-  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos};
+  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario};

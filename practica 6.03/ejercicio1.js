@@ -97,8 +97,7 @@ window.onload = () => {
     formulario.style.display="none";
     formularioModificar.style.display="inherit";
     idProducto=e.target.id;
-    
-    document.getElementById("nombreM").value;
+    biblioteca.rellenarFormulario(e.target.id)
     }
   });
   
