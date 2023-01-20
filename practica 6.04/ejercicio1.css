@@ -62,9 +62,15 @@ div#botones input{
     
 }
 
+#cerrar{
+    display:none;
+}
 
 #limpiar{
     display:none;
     justify-self: end;
 }
 
+div#formularioQueCreaUsuario{
+
+}

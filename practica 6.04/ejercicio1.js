@@ -138,6 +138,7 @@ document.getElementById("cerrar").addEventListener(
   "click",
   () => {
     biblioteca.cerrarSesion();
+    document.getElementById("iniciar").style.display="block";
   },
   false
 );
@@ -161,8 +162,9 @@ document.getElementById("divListas").addEventListener("click", (e) => {
 //Crear lista.
 document.getElementById("agregarLista").addEventListener("click", (e) => {
   let objeto = biblioteca.crearObjetoListas();
+  biblioteca.guardarLista(objeto);
   document.getElementById("nombreLista").value="";
-  console.log(objeto);
+  //console.log(objeto);
 
   //función insertar lista.
 });

@@ -321,6 +321,10 @@ const crearUsuario = async (usuario, contra) => {
                             Nombre: ${credenciales.user.displayName}<br>
                             Correo verificado: ${credenciales.user.emailVerified}`;
         //obtenerDiscentesSnap(); 
+        //Cuando inicias sesión hacer que desaparezca el formulario y el boton de iniciar sesión
+        listasCompra();
+        document.getElementById("cerrar").style.display="block";
+        document.getElementById("iniciar").style.display="none";
       })
       .catch((error) => {
         informacion.innerHTML = `Ha habido un error: ${error.message}`;
@@ -342,8 +346,12 @@ const listasCompra = async () => {
   const listasDocumentos = await getDocs(listaCompra);
   listasDocumentos.docs.map( async (d) => {
     let listasCompra = d.data();
-    let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button>`;
+    if(autentificacion.currentUser.uid === d.data().propietario){
+      let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button>`;
     document.getElementById("divListas").innerHTML += nombreListas;
+    }else{
+      document.getElementById("divListas").innerHTML += `<h2>No hay listas creadas por este usuario</h2>`;
+    }
 
   });
 };
@@ -374,17 +382,26 @@ function formatoFecha(fecha, formato) {
 
   return formato.replace(/dd|mm|yyyy/gi, matched => map[matched])
 }
-
+// Crea un objeto lista.
 const crearObjetoListas = () => {
   const hoy = new Date();
   let nombre = document.getElementById("nombreLista").value;
   let objeto = {
     nombre: nombre,
-    propietario: "",
+    propietario: autentificacion.currentUser.uid,
     fecha: formatoFecha(hoy, 'dd/mm/yyyy'),
     articulos: []
   }
   return objeto;
 };
 
-  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario,listasCompra,pintarProductosLista,crearObjetoListas};
+const guardarLista = async (objeto) => {
+  const listaGuardada = await addDoc(listaCompra, objeto);
+  info.innerHTML = `<p class='bien'>Compra guardada con el id ${listaGuardada.id}</p>`;
+  plantillas.borrar(info);
+
+ 
+  
+};
+
+  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario,listasCompra,pintarProductosLista,crearObjetoListas,guardarLista};
