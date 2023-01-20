@@ -16,6 +16,9 @@
             <option value="Precio" >Filtrar por: Precio</option>
             <option value="Peso">Filtrar por: Peso</option>
           </select>
+          <input type="label" id="valor" placeholder=>
+          <input type="button" id="buscar" value="Filtrar" />
+          <input type="button" id="limpiar" value="Limpiar filtro"/>
           <select type="select" id="orden">
             <option value="Predeterminado">Ordenar por: </option>
             <option value="Precioasc">Precio asc</option>
@@ -23,17 +26,16 @@
             <option value="Pesoasc">Peso asc</option>
             <option value="Pesodesc">Peso desc</option>
           </select>
-        <input type="label" id="valor" placeholder=>
-        <input type="button" id="buscar" value="Filtrar" />
-        <input type="button" id="limpiar" value="Limpiar filtro"/>
         <a href="#formularioAgregar"><input type="button" id="anyadir" value="Agregar Producto"/></a>
         <input type="button" id="registrar" value="Registrar usuario"/>
         <input type="button" id="iniciar" value="Iniciar sesión"/>
         <input type="button" id="cerrar" value="Cerrar sesión"/>  
         <input type="button" id="mostrar" value="Mostrar listas"/>
+        <input type="button" id="crearLista" value="Crear lista"/>
       </div>
 
     <div id="container"></div>
+    <div id="divListas"></div>
     <div id="datosFiltrados"></div>
     <div id="cuadroResumen"></div>
     <section id="formularioAgregar">
@@ -110,6 +112,9 @@
 </form>
 </div>
 </section>
+<section id="formularioQuelogeaUsuario">
+  <div>
+    <form method="Post">
 <h1>Iniciar sesión</h1>
 <label for="user">Usuario</label>
           <input type="text" id="user" />
@@ -118,7 +123,19 @@
           <input type="button" id="loggin" value="Unirse" />
 </form>
 </div>
+</section>
+<section id="formularioQueCreaLista">
+  <div>
+    <form method="Post">
+<h1>Crear lista de la compra</h1>
+<label for="nombre">Nombre de la lista</label>
+          <input type="text" id="nombreLista" />
+          <input type="button" id="agregarLista" value="Agregar lista" />
+</form>
+</div>
+</section>
 <div id="informe"></div>
+
 </section>
     <footer id="informacion"></footer>
     <script type="module" src="ejercicio1.js"></script>

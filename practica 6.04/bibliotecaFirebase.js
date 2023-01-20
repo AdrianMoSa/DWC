@@ -56,6 +56,7 @@ const listaCompraUsuarioColeccion=collection(db, "Usuarios");
 const listaCompra=collection(db,"ListaCompra");
 var alias=document.getElementById("alias");
 
+
 //Practica 6.1
 // Función para mostrar los datos de la lista de la compra.
 const obtenerListaCompra = async () => {
@@ -336,5 +337,54 @@ const crearUsuario = async (usuario, contra) => {
     }
   };
 
+  //Listar listas compra.
+const listasCompra = async () => {
+  const listasDocumentos = await getDocs(listaCompra);
+  listasDocumentos.docs.map( async (d) => {
+    let listasCompra = d.data();
+    let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button>`;
+    document.getElementById("divListas").innerHTML += nombreListas;
 
-  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario};
+  });
+};
+
+
+//Pinto los productos de la lista. Pulir mañana
+const pintarProductosLista = async (id) => {
+  
+  const idLista = await doc(listaCompra, id);
+  const lista = await getDoc(idLista);
+  lista.data().articulos.map( async (artID) => {
+    console.log(artID);
+    //let datos = await doc(listaCompraProductos, artID);
+
+    // let docProductos = await doc(listaCompraProductos, artID);
+    // let datos = await getDoc(docProductos);
+    // console.log(datos.data().Nombre);
+  });
+};
+
+//Función para obtener la fecha de hoy formateada.
+function formatoFecha(fecha, formato) {
+  const map = {
+      dd: fecha.getDate(),
+      mm: fecha.getMonth() + 1,
+      yyyy: fecha.getFullYear()
+  }
+
+  return formato.replace(/dd|mm|yyyy/gi, matched => map[matched])
+}
+
+const crearObjetoListas = () => {
+  const hoy = new Date();
+  let nombre = document.getElementById("nombreLista").value;
+  let objeto = {
+    nombre: nombre,
+    propietario: "",
+    fecha: formatoFecha(hoy, 'dd/mm/yyyy'),
+    articulos: []
+  }
+  return objeto;
+};
+
+  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario,listasCompra,pintarProductosLista,crearObjetoListas};

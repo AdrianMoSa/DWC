@@ -142,5 +142,31 @@ document.getElementById("cerrar").addEventListener(
   false
 );
 
+//Muestro las listas de la compra.
+document.getElementById("mostrar").addEventListener(
+  "click",
+  () => {
+    biblioteca.listasCompra();
+  },
+  false
+);
+
+//Muestro los productos de la lista.
+document.getElementById("divListas").addEventListener("click", (e) => {
+  let id = e.target.id;
+ 
+  biblioteca.pintarProductosLista(id);
+});
+
+//Crear lista.
+document.getElementById("agregarLista").addEventListener("click", (e) => {
+  let objeto = biblioteca.crearObjetoListas();
+  document.getElementById("nombreLista").value="";
+  console.log(objeto);
+
+  //función insertar lista.
+});
+
+
 };
 
