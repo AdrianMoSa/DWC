@@ -1,4 +1,4 @@
-div#container{
+div#container,div#productosLista{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 50px;
@@ -8,7 +8,7 @@ div#container{
 
 }
 
-div#container div{
+div#container div,div#productosLista div{
     
     width: 100%;
     border: 4px solid white;
@@ -33,7 +33,7 @@ div#formulario{
     width:40%;
     margin: 10px;
 }
-div#formularioModificar{
+div#formularioModificar,div#formularioCreacion,div#formularioAcceso,div#formularioCreaLista{
     display:none;
     color: white;
     border:4px solid white;
@@ -71,6 +71,22 @@ div#botones input{
     justify-self: end;
 }
 
-div#formularioQueCreaUsuario{
+#divListas{
+    display:none;
+    
+}
 
+#botones{
+    display:flex;
+}
+#mostrar{
+    display: none;
+}
+#crearLista{
+    display: none;
+}
+
+#informe{
+    color: white;
+    font-size: 40px;
 }

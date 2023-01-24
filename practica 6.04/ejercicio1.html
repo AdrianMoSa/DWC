@@ -27,17 +27,19 @@
             <option value="Pesodesc">Peso desc</option>
           </select>
         <a href="#formularioAgregar"><input type="button" id="anyadir" value="Agregar Producto"/></a>
-        <input type="button" id="registrar" value="Registrar usuario"/>
-        <input type="button" id="iniciar" value="Iniciar sesión"/>
-        <input type="button" id="cerrar" value="Cerrar sesión"/>  
+        <div id="botones">
         <input type="button" id="mostrar" value="Mostrar listas"/>
         <input type="button" id="crearLista" value="Crear lista"/>
+        <input type="button" id="registrar" value="Crear usuario"/>
+        <input type="button" id="iniciar" value="Iniciar sesión"/>
+        <input type="button" id="cerrar" value="Cerrar sesión"/>  
+        </div>
       </div>
 
     <div id="container"></div>
-    <div id="divListas"></div>
     <div id="datosFiltrados"></div>
     <div id="cuadroResumen"></div>
+    
     <section id="formularioAgregar">
     <div id="formulario">
         <form  method="post"> 
@@ -99,7 +101,7 @@
   </div>
 </section>
 <section id="formularioQueCreaUsuario">
-  <div>
+  <div id="formularioCreacion">
 <form method="post">
 <h1>Creación usuario</h1>
           <label for="usuario">Usuario</label>
@@ -113,7 +115,7 @@
 </div>
 </section>
 <section id="formularioQuelogeaUsuario">
-  <div>
+  <div id="formularioAcceso">
     <form method="Post">
 <h1>Iniciar sesión</h1>
 <label for="user">Usuario</label>
@@ -125,7 +127,7 @@
 </div>
 </section>
 <section id="formularioQueCreaLista">
-  <div>
+  <div id="formularioCreaLista">
     <form method="Post">
 <h1>Crear lista de la compra</h1>
 <label for="nombre">Nombre de la lista</label>
@@ -137,6 +139,10 @@
 <div id="informe"></div>
 
 </section>
+<div id="divListas">
+  <h1>Mis listas de la compra: </h1>
+</div>
+<div id="productosLista"></div>
     <footer id="informacion"></footer>
     <script type="module" src="ejercicio1.js"></script>
 </body>

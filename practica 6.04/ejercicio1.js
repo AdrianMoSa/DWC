@@ -36,6 +36,7 @@ window.onload = () => {
   var formularioModificar=document.getElementById("formularioModificar");
   var botonModificar=document.getElementById("modificarProducto");
   var idProducto;
+  var idListaCompra;
   const db = getFirestore(app);
   const listaCompraColeccion = collection(db, "Productos");
   const listaCompraUsuarioColeccion=collection(db, "Usuarios");
@@ -112,6 +113,11 @@ window.onload = () => {
 
    // Empieza la práctica 6.3
 
+//Muestra el formulario para crear el usuario
+document.getElementById("registrar").addEventListener("click", ()=>{
+document.getElementById("formularioCreacion").style.display="inherit";
+});
+
 
 document.getElementById("crear").addEventListener(
   "click",
@@ -120,9 +126,19 @@ document.getElementById("crear").addEventListener(
       document.getElementById("usuario").value,
       document.getElementById("consigna").value
     );
+    document.getElementById("usuario").value="";
+    document.getElementById("consigna").value="";
+    document.getElementById("alias").value="";
+   
   },
   false
 );
+
+//Muestra el formulario de acceso.
+document.getElementById("iniciar").addEventListener("click", ()=>{
+  document.getElementById("formularioAcceso").style.display="inherit";
+  });
+
 document.getElementById("loggin").addEventListener(
   "click",
   () => {
@@ -139,6 +155,9 @@ document.getElementById("cerrar").addEventListener(
   () => {
     biblioteca.cerrarSesion();
     document.getElementById("iniciar").style.display="block";
+    document.getElementById("cerrar").style.display="none";
+    document.getElementById("divListas").innerHTML="";
+
   },
   false
 );
@@ -155,19 +174,34 @@ document.getElementById("mostrar").addEventListener(
 //Muestro los productos de la lista.
 document.getElementById("divListas").addEventListener("click", (e) => {
   let id = e.target.id;
- 
-  biblioteca.pintarProductosLista(id);
+ idListaCompra=e.target.id;
+ document.getElementById("productosLista").innerHTML="";
+  biblioteca.pintarProductosLista(biblioteca.referenciaProductoDesdeListasCompra(id));
 });
+
+document.getElementById("crearLista").addEventListener("click", ()=>{
+  document.getElementById("formularioCreaLista").style.display="inherit";
+  });
+
 
 //Crear lista.
 document.getElementById("agregarLista").addEventListener("click", (e) => {
   let objeto = biblioteca.crearObjetoListas();
   biblioteca.guardarLista(objeto);
   document.getElementById("nombreLista").value="";
-  //console.log(objeto);
-
-  //función insertar lista.
+ 
 });
+
+//Añadir producto a lista.
+datos.addEventListener("click", (e) => {
+  if(e.target.classList.contains('alistar')){
+    let idProducto = e.target.id;
+    biblioteca.anyadirProductoLista(idListaCompra, idProducto);
+  }
+});
+
+
+
 
 
 };

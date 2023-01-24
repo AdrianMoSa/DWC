@@ -293,18 +293,16 @@ const crearUsuario = async (usuario, contra) => {
         usuario,
         contra
       );
-      // Se comprueba la estructura del nuevo objeto.
-      console.log(credenciales);
-      console.log(credenciales.user.uid);
-      console.log(alias.value);
-      //no funciona darle una vuelta.
+      
       const docuRef= doc(listaCompraUsuarioColeccion, credenciales.user.uid);
       setDoc(docuRef,{
         alias:alias.value,
         rol:"usuario"
         
       });
-      
+      document.getElementById("formularioCreacion").style.display="none";
+      document.getElementById("informe").innerHTML+="Usuario creado con exito, ya puedes acceder mediante iniciar sesión";
+      plantillas.borrar(document.getElementById("informe"));
       
     } catch (error) {
       informacion.innerHTML = `Ha habido un error: ${error.message}`;
@@ -316,15 +314,15 @@ const crearUsuario = async (usuario, contra) => {
       .then((credenciales) => {
          console.log("Sesión Iniciada");
         console.log(credenciales.user);
-        informe.innerHTML = `Ficha del usuario:<br>
-                            Correo: ${credenciales.user.email}<br>
-                            Nombre: ${credenciales.user.displayName}<br>
-                            Correo verificado: ${credenciales.user.emailVerified}`;
-        //obtenerDiscentesSnap(); 
-        //Cuando inicias sesión hacer que desaparezca el formulario y el boton de iniciar sesión
         listasCompra();
         document.getElementById("cerrar").style.display="block";
         document.getElementById("iniciar").style.display="none";
+        document.getElementById("divListas").style.display="inline-block";
+        document.getElementById("mostrar").style.display="block";
+        document.getElementById("crearLista").style.display="block";
+        document.getElementById("formularioAcceso").style.display="none";
+        document.getElementById("informe").innerHTML+="Acceso concedido, ya puedes crear y acceder a tus listas";
+      plantillas.borrar(document.getElementById("informe"));
       })
       .catch((error) => {
         informacion.innerHTML = `Ha habido un error: ${error.message}`;
@@ -335,7 +333,8 @@ const crearUsuario = async (usuario, contra) => {
     try {
       autentificacion.signOut();
       
-      informe.innerHTML = `Sesión cerrada.`; 
+      informe.innerHTML = `Sesión cerrada.`;
+      plantillas.borrar(informe); 
     } catch (error) {
       informacion.innerHTML = `Ha habido un error: ${error.message}`;
     }
@@ -346,30 +345,32 @@ const listasCompra = async () => {
   const listasDocumentos = await getDocs(listaCompra);
   listasDocumentos.docs.map( async (d) => {
     let listasCompra = d.data();
-    if(autentificacion.currentUser.uid === d.data().propietario){
-      let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button>`;
+    autentificacion.currentUser.uid === d.data().propietario
+      let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button> &nbsp`;
     document.getElementById("divListas").innerHTML += nombreListas;
-    }else{
-      document.getElementById("divListas").innerHTML += `<h2>No hay listas creadas por este usuario</h2>`;
-    }
-
-  });
+  
+  })
 };
 
+//Obtengo el id de cada producto dentro de la colección listas compra.
+const referenciaProductoDesdeListasCompra = async (id) => {
+  let ref = await doc(listaCompra, id);
+  const idLista = await getDoc(ref);
+  return idLista.data().articulos;
+};
 
-//Pinto los productos de la lista. Pulir mañana
+//Pinto los productos de la lista y los muestro
+
 const pintarProductosLista = async (id) => {
   
-  const idLista = await doc(listaCompra, id);
-  const lista = await getDoc(idLista);
-  lista.data().articulos.map( async (artID) => {
-    console.log(artID);
-    //let datos = await doc(listaCompraProductos, artID);
-
-    // let docProductos = await doc(listaCompraProductos, artID);
-    // let datos = await getDoc(docProductos);
-    // console.log(datos.data().Nombre);
+  let arrayProductos= await(id);
+  arrayProductos.map(async(id)=>{
+    let ref= await doc(listaCompraColeccion,id);
+    let idProducto= await getDoc(ref);
+    
+    document.getElementById("productosLista").innerHTML += plantillas.pintarProductoLista(idProducto);
   });
+
 };
 
 //Función para obtener la fecha de hoy formateada.
@@ -394,14 +395,25 @@ const crearObjetoListas = () => {
   }
   return objeto;
 };
-
+//Función que guarda la lista.
 const guardarLista = async (objeto) => {
   const listaGuardada = await addDoc(listaCompra, objeto);
-  info.innerHTML = `<p class='bien'>Compra guardada con el id ${listaGuardada.id}</p>`;
+  info.innerHTML = `<p class='bien'>Lista guardada con el id ${listaGuardada.id}</p>`;
   plantillas.borrar(info);
+  document.getElementById("divListas").innerHTML ="";
+  listasCompra();
 
- 
   
 };
+//añadimos un producto a la lista de la compra.
+const anyadirProductoLista = async (idLista, idProducto) => {
+  let pruebaRef = await doc(listaCompra, idLista);
+  let datos = await getDoc(pruebaRef);
+  await updateDoc(pruebaRef,{
+    articulos: [...datos.data().articulos, idProducto]
+  });
+};
 
-  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario,listasCompra,pintarProductosLista,crearObjetoListas,guardarLista};
+
+
+  export {obtenerListaCompra,filtrarProductos,crearUsuario,iniciarSesion,cerrarSesion,generarProducto,modificarProducto,guardarProducto,borrarProducto,actualizarProducto,ordenarProductos,rellenarFormulario,listasCompra,pintarProductosLista,crearObjetoListas,guardarLista,anyadirProductoLista,referenciaProductoDesdeListasCompra};
