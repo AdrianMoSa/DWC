@@ -49,6 +49,7 @@ var botonModificar=document.getElementById("modificarProducto");
 var cuadroResumen=document.getElementById("cuadroResumen");
 var idProducto;
 var total=0;
+
 var precioMedio=0;
 const db = getFirestore(app);
 const listaCompraColeccion = collection(db, "Productos");
@@ -312,8 +313,6 @@ const crearUsuario = async (usuario, contra) => {
   const iniciarSesion = (usuario, contra) => {
     signInWithEmailAndPassword(autentificacion, usuario, contra)
       .then((credenciales) => {
-         console.log("Sesión Iniciada");
-        console.log(credenciales.user);
         listasCompra();
         document.getElementById("cerrar").style.display="block";
         document.getElementById("iniciar").style.display="none";
@@ -335,6 +334,7 @@ const crearUsuario = async (usuario, contra) => {
       
       informe.innerHTML = `Sesión cerrada.`;
       plantillas.borrar(informe); 
+      document.getElementById("productosLista").innerHTML=""
     } catch (error) {
       informacion.innerHTML = `Ha habido un error: ${error.message}`;
     }
@@ -345,10 +345,10 @@ const listasCompra = async () => {
   const listasDocumentos = await getDocs(listaCompra);
   listasDocumentos.docs.map( async (d) => {
     let listasCompra = d.data();
-    autentificacion.currentUser.uid === d.data().propietario
+    if(autentificacion.currentUser.uid === d.data().propietario){
       let nombreListas = `<button id='${d.id}'>${listasCompra.nombre}</button> &nbsp`;
     document.getElementById("divListas").innerHTML += nombreListas;
-  
+    }
   })
 };
 
@@ -362,14 +362,30 @@ const referenciaProductoDesdeListasCompra = async (id) => {
 //Pinto los productos de la lista y los muestro
 
 const pintarProductosLista = async (id) => {
-  
+  var totalPeso=0;
+  var totalPrecio=0;
   let arrayProductos= await(id);
   arrayProductos.map(async(id)=>{
     let ref= await doc(listaCompraColeccion,id);
     let idProducto= await getDoc(ref);
     
+    
     document.getElementById("productosLista").innerHTML += plantillas.pintarProductoLista(idProducto);
+    totalPeso+=idProducto.data().Peso;
+    totalPrecio+=idProducto.data().Precio;
+
+    if(totalPeso>15){
+      document.getElementById("detallesLista").innerHTML="";
+    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} Kg y tendrás que ir en coche </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}</p>`;
+    }
+    else{
+      document.getElementById("detallesLista").innerHTML="";
+    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} KG y puedes ir andando </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}</p>`;
+    }
+    document.getElementById("detallesLista").style.display="inherit";
+    
   });
+
 
 };
 
