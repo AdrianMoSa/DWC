@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="ejercicio1.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/ejercicio1.css"/>
 </head>
 <body>
     
@@ -29,9 +29,9 @@
         <a href="#formularioAgregar"><input type="button" id="anyadir" value="Agregar Producto"/></a>
         <div id="botones">
         <input type="button" id="mostrar" value="Mostrar listas"/>
-        <input type="button" id="crearLista" value="Crear lista"/>
-        <input type="button" id="registrar" value="Crear usuario"/>
-        <input type="button" id="iniciar" value="Iniciar sesión"/>
+        <a href="#formularioQueCreaLista"><input type="button" id="crearLista" value="Crear lista"/></a>
+        <a href="#formularioCreacion"><input type="button" id="registrar" value="Crear usuario"/></a>
+        <a href="#formularioQuelogeaUsuario"><input type="button" id="iniciar" value="Iniciar sesión"/></a>
         <input type="button" id="cerrar" value="Cerrar sesión"/>  
         </div>
       </div>
@@ -128,7 +128,7 @@
 </section>
 <section id="formularioQueCreaLista">
   <div id="formularioCreaLista">
-    <form method="Post">
+    <form>
 <h1>Crear lista de la compra</h1>
 <label for="nombre">Nombre de la lista</label>
           <input type="text" id="nombreLista" />
@@ -146,6 +146,6 @@
 <div id="productosLista"></div>
 <div id="detallesLista"></div>
     <footer id="informacion"></footer>
-    <script type="module" src="ejercicio1.js"></script>
+    <script type="module" src="../ejercicio1.js"></script>
 </body>
 </html>

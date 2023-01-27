@@ -376,11 +376,11 @@ const pintarProductosLista = async (id) => {
 
     if(totalPeso>15){
       document.getElementById("detallesLista").innerHTML="";
-    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} Kg y tendrás que ir en coche </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}</p>`;
+    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} Kg y tendrás que ir en coche </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}€</p>`;
     }
     else{
       document.getElementById("detallesLista").innerHTML="";
-    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} KG y puedes ir andando </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}</p>`;
+    document.getElementById("detallesLista").innerHTML+=`<h3>Resumen de la lista</h3><p>El peso total de  los productos es de: ${totalPeso.toFixed(2)} KG y puedes ir andando </p><p>El precio total asciende a: ${totalPrecio.toFixed(2)}€</p>`;
     }
     document.getElementById("detallesLista").style.display="inherit";
     

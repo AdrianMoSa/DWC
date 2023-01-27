@@ -1,5 +1,5 @@
 "use strict";
-// Me gustaría saber si se puede de alguna manera filtrar los datos en un campo determinado y ordenarlos por otro distinto. (Me daba error al hacerlo).
+// Para añadir un producto a la lista de la compra de un propietario previamente hay que pinchar en la lista de la compra, y luego puedes añadirlos desde el boton añadir a lista, que se muestra en los productos que se muestran arriba PD: No he sabido donde poner el mensaje de producto añadido a lista por lo que no muestra mensaje pero se añade lo verás si vuelves a pulsar sobre la lista.
 import * as plantillas from "./plantillasFirebase.js";
 import * as biblioteca from "./bibliotecaFirebase.js";
 import { app } from "./conexionFirebase.js";
@@ -116,6 +116,7 @@ window.onload = () => {
 //Muestra el formulario para crear el usuario
 document.getElementById("registrar").addEventListener("click", ()=>{
 document.getElementById("formularioCreacion").style.display="inherit";
+
 });
 
 
@@ -137,6 +138,7 @@ document.getElementById("crear").addEventListener(
 //Muestra el formulario de acceso.
 document.getElementById("iniciar").addEventListener("click", ()=>{
   document.getElementById("formularioAcceso").style.display="inherit";
+  
   });
 
 document.getElementById("loggin").addEventListener(
@@ -157,19 +159,17 @@ document.getElementById("cerrar").addEventListener(
     document.getElementById("iniciar").style.display="block";
     document.getElementById("cerrar").style.display="none";
     document.getElementById("divListas").innerHTML="";
+    document.getElementById("formularioCreacion").style.display="none";
+    document.getElementById("formularioQueCreaLista").style.display="none";
+    document.getElementById("detallesLista").style.display="none";
+    
 
   },
   false
 );
 
-//Muestro las listas de la compra.
-document.getElementById("mostrar").addEventListener(
-  "click",
-  () => {
-    biblioteca.listasCompra();
-  },
-  false
-);
+
+
 
 //Muestro los productos de la lista.
 document.getElementById("divListas").addEventListener("click", (e) => {
@@ -181,6 +181,7 @@ document.getElementById("divListas").addEventListener("click", (e) => {
 
 document.getElementById("crearLista").addEventListener("click", ()=>{
   document.getElementById("formularioCreaLista").style.display="inherit";
+  document.getElementById("formularioQueCreaLista").style.display="inherit";
   });
 
 
