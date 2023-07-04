@@ -1,0 +1,28 @@
+/* Al parrafo con id primero le damos un padding de 20 como señala el ejercicio y a la clase destacado seguimos las instrucciones dadas y lo mismo con el segundo */
+#primero {
+  padding: 20px;
+}
+#primero .destacado {
+  color: #ff8000;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 6px;
+}
+
+#segundo {
+  padding: 20px;
+}
+#segundo .destacado {
+  color: #2e5f64;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  padding: 5px;
+}
+#segundo #parrafos {
+  text-align: right;
+}
+#segundo #parrafos p::first-line {
+  font-style: italic;
+}
+
+/*# sourceMappingURL=ejercicio1.css.map */
